@@ -1,0 +1,5 @@
+rootProject.name = 'wso2-poc'
+
+include 'id-server-sign-on'
+include 'wso2-sso'
+
