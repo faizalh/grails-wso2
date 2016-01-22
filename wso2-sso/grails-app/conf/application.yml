@@ -115,3 +115,37 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+# WSO2 Properties
+---
+wso2:
+    EnableSAML2SSOLogin: true
+    EnableOpenIDLogin: true
+    EnabaleOAuth2SAML2Grant: false
+    SAML2SSOURL: samlsso
+    OAuth2SAML2GrantURL: token
+    OpenIdURL: openid
+    SkipURIS: /travelocity.com/index.jsp
+    KeyStorePassword: wso2carbon
+    IdPublicCertAlias: wso2carbon
+    PrivateKeyAlias: wso2carbon
+    PrivateKeyPassword: wso2carbon
+    SAML2:
+        SPEntityID: travelocity.com
+        AssertionConsumer: http://localhost:8080/travlocitiy.com/home.jsp
+        IdPEntityId: localhost
+        IdPURL: https://localhost:9443/samlsso
+        EnableSLO: true
+        SLOURL: logout
+        ENableResponseSigning: true
+        EnableAssertionesSigning: true
+        EnableAssertionEncryption: false
+        EnableRequestSigning: true
+    OAuth2:
+        TokenURL: https://localhost:9443/oauth2/token
+        ClientId: Qn5DQHCYfshxeZh6R9SL1HM2lsMa
+        ClientSecret: cbkAs1gajdwPAMbrSR54hPAIcz0a
+    OpenId:
+        ProviderURL: https://localhost:9443/openid/
+        ReturnToURL: https://localhost:8080/travelocity.com/home.jsp
+        EnableAttributeExchage: true
+        EnableDumbMode: false
