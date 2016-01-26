@@ -1,6 +1,17 @@
 package wso2.sso
 
 import grails.plugins.*
+import org.springframework.boot.context.embedded.FilterRegistrationBean
+import org.springframework.boot.context.embedded.ServletListenerRegistrationBean
+import org.springframework.boot.context.embedded.ServletRegistrationBean
+import org.springframework.core.Ordered
+import org.wso2.carbon.identity.sso.agent.bean.SSOAgentConfig
+import org.wso2.carbon.identity.sso.agent.saml.SSOAgentHttpSessionListener
+import org.wso2.carbon.identity.sso.agent.saml.SSOAgentX509KeyStoreCredential
+import org.wso2.sample.is.sso.agent.ForwardingServlet
+import org.wso2.sample.is.sso.agent.SSOAgentSampleFilter
+import org.wso2.sample.is.sso.agent.SampleContextEventListener
+
 
 class Wso2SsoGrailsPlugin extends Plugin {
 
@@ -13,8 +24,8 @@ class Wso2SsoGrailsPlugin extends Plugin {
 
     // TODO Fill in these fields
     def title = "Wso2 Sso" // Headline display name of the plugin
-    def author = "Your name"
-    def authorEmail = ""
+    def author = "Faizal Hussein"
+    def authorEmail = "faizal.hussein@b2b.com.my"
     def description = '''\
 Brief summary/description of the plugin.
 '''
@@ -42,7 +53,32 @@ Brief summary/description of the plugin.
 
     Closure doWithSpring() { {->
             // TODO Implement runtime spring config (optional)
+
+        //register the servlet from the wso2 example
+            forwardServlet (ServletRegistrationBean,
+                            new ForwardingServlet(),
+                            "/samlsso",
+                            "/openid",
+                            "/token",
+                            "/logout") {
+                loadOnStartup = 1
+            }
+        //register the filter from the wso2 example
+            ssoAgentFilter (FilterRegistrationBean) {
+                filter = bean(SSOAgentSampleFilter)
+                urlPatterns = ['/*.gsp','/samlsso','/openid','/token','/logout']
+                order = Ordered.HIGHEST_PRECEDENCE
+            }
         }
+        // register the seesionlistener
+            ssoAgentSessionListener(ServletListenerRegistrationBean) {
+                listener = bean(SSOAgentHttpSessionListener)
+            }
+        // register the contextevent listener
+        ssoAgentContextEventListener(ServletListenerRegistrationBean) {
+            listener = bean(SampleContextEventListener)
+        }
+
     }
 
     void doWithDynamicMethods() {

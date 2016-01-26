@@ -33,7 +33,7 @@ import java.util.logging.Logger;
 
 public class SampleContextEventListener implements ServletContextListener {
 
-    private static Logger LOGGER = Logger.getLogger("org.wso2.sample.is.sso.agent");
+    private static Logger LOGGER = Logger.getLogger("org.wso2.sample.is.sso.org.wso.sample.is.sso.agent");
 
     private static Properties properties;
 

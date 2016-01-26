@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 
 public class SSOAgentSampleFilter extends SSOAgentFilter {
 
-    private static Logger LOGGER = Logger.getLogger("org.wso2.sample.is.sso.agent");
+    private static Logger LOGGER = Logger.getLogger("org.wso2.sample.is.sso.org.wso.sample.is.sso.agent");
 
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";

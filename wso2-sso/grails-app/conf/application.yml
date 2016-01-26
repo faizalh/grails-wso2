@@ -129,23 +129,23 @@ wso2:
     IdPublicCertAlias: wso2carbon
     PrivateKeyAlias: wso2carbon
     PrivateKeyPassword: wso2carbon
-    SAML2:
-        SPEntityID: travelocity.com
-        AssertionConsumer: http://localhost:8080/travlocitiy.com/home.jsp
-        IdPEntityId: localhost
-        IdPURL: https://localhost:9443/samlsso
-        EnableSLO: true
-        SLOURL: logout
-        ENableResponseSigning: true
-        EnableAssertionesSigning: true
-        EnableAssertionEncryption: false
-        EnableRequestSigning: true
-    OAuth2:
-        TokenURL: https://localhost:9443/oauth2/token
-        ClientId: Qn5DQHCYfshxeZh6R9SL1HM2lsMa
-        ClientSecret: cbkAs1gajdwPAMbrSR54hPAIcz0a
-    OpenId:
-        ProviderURL: https://localhost:9443/openid/
-        ReturnToURL: https://localhost:8080/travelocity.com/home.jsp
-        EnableAttributeExchage: true
-        EnableDumbMode: false
+SAML2:
+    SPEntityID: travelocity.com
+    AssertionConsumer: http://localhost:8080/travlocitiy.com/home.jsp
+    IdPEntityId: localhost
+    IdPURL: https://localhost:9443/samlsso
+    EnableSLO: true
+    SLOURL: logout
+    ENableResponseSigning: true
+    EnableAssertionesSigning: true
+    EnableAssertionEncryption: false
+    EnableRequestSigning: true
+OAuth2:
+    TokenURL: https://localhost:9443/oauth2/token
+    ClientId: Qn5DQHCYfshxeZh6R9SL1HM2lsMa
+    ClientSecret: cbkAs1gajdwPAMbrSR54hPAIcz0a
+OpenId:
+    ProviderURL: https://localhost:9443/openid/
+    ReturnToURL: https://localhost:8080/travelocity.com/home.jsp
+    EnableAttributeExchage: true
+    EnableDumbMode: false

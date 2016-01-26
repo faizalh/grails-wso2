@@ -1,18 +1,52 @@
+buildscript {
+    ext {
+        grailsVersion = project.grailsVersion
+    }
+    repositories {
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.5.0'
+        classpath "org.grails.plugins:hibernate:4.3.10.5"
+    }
+}
 group 'my.com.b2b'
 version '1.0-SNAPSHOT'
-
+plugins {
+    id "io.spring.dependency-management" version "0.5.4.RELEASE"
+}
 apply plugin: 'groovy'
 apply plugin: 'java'
 apply plugin: 'idea'
+
+apply plugin: "spring-boot"
+apply plugin: "war"
+apply plugin: "asset-pipeline"
+apply plugin: "org.grails.grails-web"
+apply plugin: "org.grails.grails-gsp"
 
 sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
+    maven { url "https://repo.grails.org/grails/core" }
+    maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/"}
+    maven { url "http://maven.wso2.org/nexus/content/repositories/releases/"}
+    maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/"}
 }
-
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.grails.org/grails/core" }
+        maven { url "http://maven.wso2.org/nexus/content/groups/wso2-public/"}
+        maven { url "http://maven.wso2.org/nexus/content/repositories/releases/"}
+        maven { url "http://maven.wso2.org/nexus/content/repositories/snapshots/"}
+    }
+}
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    compile project(':wso2-sso')
+
 }
